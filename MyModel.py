@@ -13,6 +13,7 @@ class MyModel(object):
         Add any initialization parameters. These will be passed at runtime from the graph definition parameters defined in your seldondeployment kubernetes resource manifest.
         """
         print("Initializing")
+        print("url: " + url)
         self.fix = fix
         self.url = url
         self.loaded = False
