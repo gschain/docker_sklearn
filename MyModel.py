@@ -33,6 +33,7 @@ class MyModel(object):
         X : array-like
         feature_names : array of feature names (optional)
         """
+        print(X)
         if not self.loaded:
             self.load()
 
