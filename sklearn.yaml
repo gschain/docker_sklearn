@@ -1,0 +1,24 @@
+apiVersion: machinelearning.seldon.io/v1alpha2
+kind: SeldonDeployment
+metadata:
+  name: stupid-meta-name
+spec:
+  name: stupid-spec-name
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - name: classifier
+          image: whitelilis/whitelilis-sklearn:latest
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: classifier
+      type: MODEL
+      parameters:
+        - name: fix
+          type: INT
+          value: "55"
+    name: stupdi-predict-name
+    replicas: 1
