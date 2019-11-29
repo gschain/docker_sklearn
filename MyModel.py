@@ -8,7 +8,7 @@ class MyModel(object):
     """
     Model template. You can load your model parameters in __init__ from a location accessible at runtime
     """
-    def __init__(self, fix = 2, url = 'https://shield.mlamp.cn/task/api/file/space/download/1098db05ad0bea9020e426327ff30580/56162/sklearn_save.m'):
+    def __init__(self, fix = 2, url = 'https://shield.mlamp.cn/task/api/file/space/download/147cbad2739812c9973c8725bac26552/60288/model.m'):
         """
         Add any initialization parameters. These will be passed at runtime from the graph definition parameters defined in your seldondeployment kubernetes resource manifest.
         """
@@ -21,6 +21,7 @@ class MyModel(object):
     def load(self):
         urllib.request.urlretrieve(self.url, "model.m")
         self.model = joblib.load('model.m')
+        self.loaded = True
 
     def predict(self, X, features_names=None):
         """
@@ -41,6 +42,4 @@ class MyModel(object):
 
 
 #aa = MyModel()
-#test = pd.read_csv("/tmp/test_X.csv")
-#test=test.drop(['Unnamed: 0'], axis=1)
-#print(aa.predict(test.values))
+#print(aa.predict([[5,5,3],[2,2,2]]))
