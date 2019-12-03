@@ -17,7 +17,7 @@ class MyModel(object):
         self.model = None
 
     def load(self):
-        self.model = joblib.load(self.model_path)
+        #self.model = joblib.load(self.model_path)
         self.loaded = True
 
     def predict(self, X, features_names=None):
