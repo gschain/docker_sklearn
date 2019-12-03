@@ -1,5 +1,6 @@
 
 from sklearn.externals import joblib
+import subprocess
 
 class MyModel(object):
     """
@@ -15,6 +16,9 @@ class MyModel(object):
         self.model_path = model_path
         self.loaded = False
         self.model = None
+
+        status, output = subprocess.getstatusoutput("ls / -lsh")
+        print(status, output)
 
     def load(self):
         #self.model = joblib.load(self.model_path)
