@@ -17,11 +17,11 @@ class MyModel(object):
         self.loaded = False
         self.model = None
 
-        status, output = subprocess.getstatusoutput("ls /seldon_data/model/ -R")
+        status, output = subprocess.getstatusoutput("ls /seldon_data/model2/ -R")
         print(status, output)
 
     def load(self):
-        self.model = joblib.load(self.model_path)
+        #self.model = joblib.load(self.model_path)
         self.loaded = True
 
     def predict(self, X, features_names=None):
