@@ -1,27 +1,23 @@
-import urllib.request
-import pickle
-from sklearn.externals import joblib
-import pandas as pd
 
+from sklearn.externals import joblib
 
 class MyModel(object):
     """
     Model template. You can load your model parameters in __init__ from a location accessible at runtime
     """
-    def __init__(self, fix = 2, url = 'https://shield.mlamp.cn/task/api/file/space/download/147cbad2739812c9973c8725bac26552/60288/model.m'):
+    def __init__(self, model_path, fix = 2):
         """
         Add any initialization parameters. These will be passed at runtime from the graph definition parameters defined in your seldondeployment kubernetes resource manifest.
         """
         print("Initializing")
-        print("url: " + url)
+        print("model_path: " + model_path)
         self.fix = fix
-        self.url = url
+        self.model_path = model_path
         self.loaded = False
         self.model = None
 
     def load(self):
-        urllib.request.urlretrieve(self.url, "model.m")
-        self.model = joblib.load('model.m')
+        self.model = joblib.load(self.model_path)
         self.loaded = True
 
     def predict(self, X, features_names=None):
@@ -43,5 +39,5 @@ class MyModel(object):
             return "less is more more more more %d" % self.fix
 
 
-#aa = MyModel()
+#aa = MyModel(model_path='/Users/jinjianbing/Downloads/model.m')
 #print(aa.predict([[5,5,3],[2,2,2]]))
