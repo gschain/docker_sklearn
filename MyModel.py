@@ -15,7 +15,7 @@ class MyModel(object):
         print("model key: " + model_key)
         self.loaded = False
         self.model = None
-        self.s3 = connect_s3.ConnectS3(bucket, model_key)
+        #self.s3 = connect_s3.ConnectS3(bucket, model_key)
 
     def load(self):
         self.model = joblib.load("./model.m")
@@ -40,4 +40,4 @@ class MyModel(object):
 
 
 # aa = MyModel("kubeflow-anonymous-test", 'test/2019-12-16T17-43-41Z/test')
-# print(aa.predict([[5,5,3], [2,2,2]]))
+# print(aa.predict([[5,5,3],[2,2,2]]))
