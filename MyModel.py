@@ -15,7 +15,7 @@ class MyModel(object):
         print("model key: " + model_key)
         self.loaded = False
         self.model = None
-        #self.s3 = connect_s3.ConnectS3(bucket, model_key)
+        self.s3 = connect_s3.ConnectS3(bucket, model_key)
 
     def load(self):
         self.model = joblib.load("./model.m")
