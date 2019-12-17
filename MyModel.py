@@ -40,4 +40,4 @@ class MyModel(object):
 
 
 # aa = MyModel("kubeflow-anonymous-test", 'test/2019-12-16T17-43-41Z/test')
-# print(aa.predict([5,5,3]))
+# print(aa.predict([[5,5,3], [2,2,2]]))

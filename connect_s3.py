@@ -45,4 +45,4 @@ class ConnectS3(object):
         key = self.bucket.get_key(self.network_key)
         key.get_contents_to_filename("./Network.py")
 
-s3 = ConnectS3('kubeflow-anonymous-test', "test/2019-12-16T15-47-38Z/test", 'test/2019-12-16T17-43-41Z/network')
+#s3 = ConnectS3('kubeflow-anonymous-test', "test/2019-12-16T15-47-38Z/test", 'test/2019-12-16T17-43-41Z/network')
