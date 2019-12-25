@@ -2,6 +2,7 @@
 from sklearn.externals import joblib
 import connect_s3
 import Transform
+from importlib import reload
 
 class MyModel(object):
     """
@@ -17,6 +18,8 @@ class MyModel(object):
         self.loaded = False
         self.model = None
         self.s3 = connect_s3.ConnectS3(bucket, model_key, transform_key)
+        if not transform_key is None:
+            reload(Transform)
 
     def load(self):
         self.model = joblib.load("./model.m")
