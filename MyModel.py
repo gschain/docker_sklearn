@@ -19,6 +19,7 @@ class MyModel(object):
         self.model = None
         self.s3 = connect_s3.ConnectS3(bucket, model_key, transform_key)
         if not transform_key is None:
+            print("transform key: " + transform_key)
             reload(Transform)
 
     def load(self):
