@@ -1,7 +1,7 @@
 
 from sklearn.externals import joblib
 import connect_s3
-import Transform
+import transform
 from importlib import reload
 
 class MyModel(object):
@@ -20,7 +20,7 @@ class MyModel(object):
         self.s3 = connect_s3.ConnectS3(bucket, model_key, transform_key)
         if not transform_key is None:
             print("transform key: " + transform_key)
-            reload(Transform)
+            reload(transform)
 
     def load(self):
         self.model = joblib.load("./model.m")
@@ -39,9 +39,9 @@ class MyModel(object):
             self.load()
 
         if self.model:
-            transform = Transform.Transform()
-            transform.transform_input(X)
-            return transform.transform_output(self.model)
+            transform_obj = transform.Transform()
+            transform_obj.transform_input(X)
+            return transform_obj.transform_output(self.model)
         else:
             return "less is more more more more"
 
